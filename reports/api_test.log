@@ -1,0 +1,10 @@
+2025-01-09 16:54:11,564 - api_test_logger - INFO - Setting up url
+2025-01-09 16:54:11,564 - api_test_logger - INFO - Running test_get_comment
+2025-01-09 16:54:11,927 - api_test_logger - INFO - Running test_create_comment
+2025-01-09 16:54:12,291 - api_test_logger - INFO - Running test_update_comment
+2025-01-09 16:54:12,480 - api_test_logger - INFO - Running test_delete_comment
+2025-01-09 17:03:57,369 - api_test_logger - INFO - Setting up url
+2025-01-09 17:03:57,369 - api_test_logger - INFO - Running test_get_comment
+2025-01-09 17:03:57,717 - api_test_logger - INFO - Running test_create_comment
+2025-01-09 17:03:57,900 - api_test_logger - INFO - Running test_update_comment
+2025-01-09 17:03:58,283 - api_test_logger - INFO - Running test_delete_comment
