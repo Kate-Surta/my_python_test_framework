@@ -6,10 +6,13 @@ from jsonschema import validate
 from unittest.mock import patch
 
 from tests.Comment import Comment
+from utils.logger import setup_logger
 
+logger = setup_logger('api_test_logger', 'reports/api_test.log')
 
 @pytest.fixture(scope="session")
 def base_url():
+    logger.info("Setting up url")
     return "https://jsonplaceholder.typicode.com"
 
 
@@ -33,6 +36,7 @@ comment_schema = {
 
 # GET + exception handling
 def test_get_comment(base_url, headers):
+    logger.info("Running test_get_comment")
     try:
         response = requests.get(f"{base_url}/comments/1", headers=headers, timeout=5)
         response.raise_for_status()
@@ -53,6 +57,7 @@ def test_get_comment(base_url, headers):
 
 # POST using payload
 def test_create_comment(base_url, headers):
+    logger.info("Running test_create_comment")
     new_comment = Comment(
         user_id=1,
         timestamp="2024-01-06 10:00:00",
@@ -86,6 +91,7 @@ def test_create_comment(base_url, headers):
 
 # PUT
 def test_update_comment(base_url, headers):
+    logger.info("Running test_update_comment")
     comment_id = 1
     updated_payload = {
         "id": comment_id,
@@ -109,6 +115,7 @@ def test_update_comment(base_url, headers):
 
 # DELETE
 def test_delete_comment(base_url, headers):
+    logger.info("Running test_delete_comment")
     comment_id = 1
     response = requests.delete(f"{base_url}/comments/{comment_id}", headers=headers)
 
