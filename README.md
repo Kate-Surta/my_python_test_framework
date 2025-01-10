@@ -8,6 +8,7 @@ Project contains UI and API tests
 /test_automation_framework  
 ├── /tests  
 ├── /reports # Test reports and logs  
+├── /utils # Test logger implementation  
 ├── requirements.txt  
 └── pytest.ini # Pytest configuration
 
