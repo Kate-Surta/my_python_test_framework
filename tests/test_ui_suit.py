@@ -1,6 +1,8 @@
 import pytest
 from playwright.sync_api import sync_playwright
 from tests.starting_page import StartingPage
+from tests.links_page import LinksPage
+from tests.radio_button_page import RadioButtonPage
 from utils.logger import setup_logger
 
 logger = setup_logger('ui_test_logger', 'reports/ui_test.log')
@@ -37,3 +39,24 @@ def test_correct_data(page):
     assert output_text["email"] == "donald.duck@example.com"
     assert output_text["current_address"] == "56 Main St"
     assert output_text["permanent_address"] == "379 Apple Rd"
+
+
+def test_bad_request_link(page):
+    logger.info("Start test_bad_request_link")
+    links_page = LinksPage(page)
+    links_page.navigate()
+
+    status, status_text = links_page.click_bad_request_link()
+
+    assert status == 400, f"Expected status 400, but got {status}"
+    assert status_text == "Bad Request", f"Expected text 'Bad Request', but got {status_text}"
+
+
+def test_select_impressive_radio_button(page):
+    logger.info("Start test_select_impressive_radio_button")
+    radio_button_page = RadioButtonPage(page)
+    radio_button_page.navigate()
+
+    message = radio_button_page.select_impressive()
+
+    assert message == "You have selected Impressive", f"Expected message 'You have selected Impressive', but got '{message}'"
